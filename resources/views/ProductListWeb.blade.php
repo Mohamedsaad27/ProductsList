@@ -147,7 +147,7 @@
                                         @endif
                                     </td>
                                     <td class="fw-medium">{{ $product->name }}</td>
-                                    <td>{{ number_format($product->price, 2) }} د.ك</td>
+                                    <td>{{ number_format($product->price, 2) }} ج.م</td>
                                     <td>{{ $product->created_at->format('Y-m-d') }}</td>
                                     <td>
                                         <div class="btn-group gap-2" role="group">
