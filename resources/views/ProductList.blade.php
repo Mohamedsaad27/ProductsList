@@ -93,16 +93,16 @@
     <table>
         <thead>
             <tr>
-                <th>اسم المنتج</th>
                 <th>السعر</th>
+                <th>اسم المنتج</th>
                 <th>الصورة</th>
             </tr>
         </thead>
         <tbody>
             @foreach($show as $product)
             <tr>
-                <td>{{ $product->name }}</td>
                 <td>{{ $product->price }} ج.م</td>
+                <td>{{ $product->name }}</td>
                 <td><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"></td>
             </tr>
             @endforeach
