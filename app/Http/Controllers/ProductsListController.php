@@ -3,42 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-// use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Mpdf\Mpdf;
 use Omaralalwi\Gpdf\Facade\Gpdf as GpdfFacade;
-use PDF;
 
 class ProductsListController extends Controller
 {
     // use PDF;  // Add this at the top of your controller
 
     public function index()
-    {
-        $show = Product::orderBy('created_at', 'desc')->get();
-    
-        $mpdf = new Mpdf([
-            'mode' => 'utf-8',
-            'format' => 'A4',
-            'default_font_size' => 12,
-            'margin_left' => 15,
-            'margin_right' => 15,
-            'margin_top' => 16,
-            'margin_bottom' => 16,
-            'margin_header' => 9,
-            'margin_footer' => 9,
-            'default_font' => 'cairo', 
-            'direction' => 'ltr',
-        ]);
-    
-        $mpdf->AddFontDirectory(public_path('fonts'));
-        $mpdf->SetFont('cairo');
-    
-        $html = view('ProductList', compact('show'))->render();
-        $mpdf->WriteHTML($html);
-    
-        return $mpdf->Output('ProductList.pdf', 'D');
-    }
+{
+    $show = Product::orderBy('created_at', 'desc')->get();
+
+    $pdf = Pdf::loadView('ProductList', compact('show'))
+        ->setPaper('a4')
+        ->setOption('defaultFont', 'Cairo');
+
+    return $pdf->download('ProductList.pdf');
+}
 
     public function indexWeb()
     {
