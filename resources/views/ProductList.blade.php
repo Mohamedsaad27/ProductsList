@@ -80,7 +80,7 @@
 </head>
 <body>
     <div class="title-section">
-        <img src="{{asset('images/photo_2024-11-09_18-56-30.jpg')}}" alt="D-Seven Store Logo">
+        <img src="{{asset('photo_2024-11-09_18-56-30.jpg')}}" alt="D-Seven Store Logo">
         <h1 class="store-name">D-Seven Store</h1>
         <p class="store-info">العنوان:  نجع حمادي ، قنا، مصر</p>
         <p class="store-info">هاتف: 01021369699</p>
