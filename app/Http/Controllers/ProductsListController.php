@@ -15,7 +15,7 @@ class ProductsListController extends Controller
 
     public function index()
     {
-        $show = Product::orderBy('created_at', 'desc')->all();
+        $show = Product::orderBy('created_at', 'desc')->get();
 
         $mpdf = new Mpdf([
             'mode' => 'utf-8',
