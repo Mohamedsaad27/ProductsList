@@ -1,88 +1,102 @@
 <!DOCTYPE html>
-<html lang="ar" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="D-Seven Store - عرض منتجاتنا">
-    <meta name="keywords" content="منتجات, تسوق, D-Seven Store">
-    <meta name="author" content="D-Seven Store">
     <title>D-Seven Store - عرض المنتجات</title>
     <style>
         body {
-            font-family: 'tajawal', sans-serif;
-            direction: ltr;
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
         }
-        .title-section {
-            background-color: #fff;
-            padding: 20px;
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
+
         .logo {
-            width: 120px;
-            height: auto;
-            margin-bottom: 15px;
+            max-width: 150px;
+            margin-bottom: 20px;
         }
+
         .store-name {
-            color: #333;
-            font-size: 28px;
+            font-size: 32px;
+            margin: 0;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .store-info {
+            font-size: 18px;
+            color: #ecf0f1;
             margin: 10px 0;
         }
-        .store-info {
-            color: #666;
-            font-size: 16px;
-            margin: 5px 0;
-        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: white;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
+
+        th {
+            background-color: #34495e;
+            color: white;
+            padding: 15px;
+            font-size: 16px;
             text-align: right;
         }
-        th {
-            background-color: #f2f2f2;
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .price {
             font-weight: bold;
+            color: #2ecc71;
         }
-        img {
-            max-width: 100px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-        }
+
         footer {
-            background-color: #333;
-            color: #fff;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
             text-align: center;
-            padding: 10px 0;
-            margin-top: 20px;
+            font-size: 14px;
         }
-        @media (max-width: 768px) {
-            .store-name {
-                font-size: 24px;
-            }
-            .store-info {
-                font-size: 14px;
-            }
-            th, td {
-                padding: 8px;
-            }
+
+        .page-number {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="title-section">
-        <img src="{{asset('photo_2024-11-09_18-56-30.jpg')}}" alt="D-Seven Store Logo">
+    <div class="header">
+        <img src="{{asset('photo_2024-11-09_18-56-30.jpg')}}" alt="D-Seven Store Logo" class="logo">
         <h1 class="store-name">D-Seven Store</h1>
-        <p class="store-info">العنوان:  نجع حمادي ، قنا، مصر</p>
+        <p class="store-info">العنوان: نجع حمادي، قنا، مصر</p>
         <p class="store-info">هاتف: 01021369699</p>
     </div>
 
@@ -90,23 +104,27 @@
         <thead>
             <tr>
                 <th>الصورة</th>
-                <th>السعر</th>
                 <th>اسم المنتج</th>
+                <th>السعر</th>
             </tr>
         </thead>
         <tbody>
             @foreach($show as $product)
             <tr>
-                <td><img src="{{asset('images/'.$product->image)}}" alt="{{ $product->name }}"></td>
-                <td>{{ $product->price }} ج.م</td>
+                <td><img src="{{asset('images/'.$product->image)}}" alt="{{ $product->name }}" class="product-image"></td>
                 <td>{{ $product->name }}</td>
+                <td class="price">{{ number_format($product->price, 2) }} ج.م</td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2024 - D-Seven Store</p>
+        <p>جميع الحقوق محفوظة © {{ date('Y') }} D-Seven Store</p>
     </footer>
+
+    <div class="page-number">
+        {PAGENO}
+    </div>
 </body>
 </html>

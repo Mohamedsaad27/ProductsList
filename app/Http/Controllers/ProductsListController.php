@@ -20,7 +20,7 @@ class ProductsListController extends Controller
         $mpdf = new Mpdf([
             'mode' => 'utf-8',
             'format' => 'A4',
-            'default_font' => 'tajawal',
+            'default_font' => 'Tajawal',
             'default_font_size' => 12,
             'margin_left' => 15,
             'margin_right' => 15,
@@ -28,7 +28,13 @@ class ProductsListController extends Controller
             'margin_bottom' => 16,
             'margin_header' => 9,
             'margin_footer' => 9,
-            'direction' => 'ltr'
+            'direction' => 'rtl',  // Changed to RTL since it's Arabic
+            'font-data' => [
+                'tajawal' => [
+                    'R' => 'Tajawal-Regular.ttf',
+                    'B' => 'Tajawal-Bold.ttf',
+                ]
+            ]
         ]);
 
         $html = view('ProductList', compact('show'))->render();
