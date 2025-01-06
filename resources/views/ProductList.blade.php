@@ -9,7 +9,7 @@
     <title>D-Seven Store - عرض المنتجات</title>
     <style>
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Cairo', sans-serif;
             direction: ltr;
             margin: 0;
             padding: 0;
