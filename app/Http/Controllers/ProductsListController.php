@@ -16,7 +16,7 @@ class ProductsListController extends Controller
     public function index()
     {
         $show = Product::orderBy('created_at', 'desc')->get();
-
+    
         $mpdf = new Mpdf([
             'mode' => 'utf-8',
             'format' => 'A4',
@@ -27,15 +27,16 @@ class ProductsListController extends Controller
             'margin_bottom' => 16,
             'margin_header' => 9,
             'margin_footer' => 9,
-            'direction' => 'ltr'
+            'default_font' => 'cairo', 
+            'direction' => 'ltr',
         ]);
-
-        // $mpdf->AddFontDirectory('Tajawal-Regular', 'R', public_path('fonts/Tajawal-Regular.ttf'));
-        // $mpdf->AddFontDirectory('Tajawal-Bold', 'B', public_path('fonts/Tajawal-Bold.ttf'));
-
+    
+        $mpdf->AddFontDirectory(public_path('fonts'));
+        $mpdf->SetFont('cairo');
+    
         $html = view('ProductList', compact('show'))->render();
         $mpdf->WriteHTML($html);
-
+    
         return $mpdf->Output('ProductList.pdf', 'D');
     }
 
