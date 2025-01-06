@@ -85,24 +85,24 @@
 <body>
     <div class="title-section">
         <img src="{{ asset('photo_2024-11-09_18-56-30.jpg') }}" alt="D-Seven Store Logo" class="logo">
-        <h1 class="store-name">D-Seven Store</h1>
-        <p class="store-info">العنوان: نجع حمادي ، قنا، مصر</p>
-        <p class="store-info">هاتف: 01021369699</p>
+        <h1 class="store-name" style="font-family: 'Tajawal', sans-serif;">D-Seven Store</h1>
+        <p class="store-info" style="font-family: 'Tajawal', sans-serif;">العنوان: نجع حمادي ، قنا، مصر</p>
+        <p class="store-info" style="font-family: 'Tajawal', sans-serif;">هاتف: 01021369699</p>
     </div>
 
     <table>
         <thead>
             <tr>
-                <th>السعر</th>
-                <th>اسم المنتج</th>
-                <th>الصورة</th>
+                <th style="font-family: 'Tajawal', sans-serif;">السعر</th>
+                <th style="font-family: 'Tajawal', sans-serif;">اسم المنتج</th>
+                <th style="font-family: 'Tajawal', sans-serif;">الصورة</th>
             </tr>
         </thead>
         <tbody>
             @foreach($show as $product)
             <tr>
-                <td>{{ $product->price }} ج.م</td>
-                <td>{{ $product->name }}</td>
+                <td style="font-family: 'Tajawal', sans-serif;">{{ $product->price }} ج.م</td>
+                <td style="font-family: 'Tajawal', sans-serif;">{{ $product->name }}</td>
                 <td><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"></td>
             </tr>
             @endforeach
@@ -110,7 +110,7 @@
     </table>
 
     <footer>
-        <p>جميع الحقوق محفوظة © {{ date('Y') }} - D-Seven Store</p>
+        <p style="font-family: 'Tajawal', sans-serif;">جميع الحقوق محفوظة © {{ date('Y') }} - D-Seven Store</p>
     </footer>
 </body>
 </html>
