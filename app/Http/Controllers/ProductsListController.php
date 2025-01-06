@@ -30,8 +30,8 @@ class ProductsListController extends Controller
             'direction' => 'ltr'
         ]);
 
-        $mpdf->fontDir = [public_path('fonts')];
-        $mpdf->SetDefaultFont('Tajawal');
+        $mpdf->AddFont('Tajawal', '', public_path('fonts/Tajawal-Regular.ttf'));
+        $mpdf->AddFont('Tajawal', 'B', 'Tajawal-Bold.ttf');
 
         $html = view('ProductList', compact('show'))->render();
         $mpdf->WriteHTML($html);
