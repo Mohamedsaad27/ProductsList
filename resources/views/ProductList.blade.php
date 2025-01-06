@@ -9,7 +9,7 @@
     <title>D-Seven Store - عرض المنتجات</title>
     <style>
         body {
-            font-family: 'tajawal', sans-serif;
+            font-family: 'Tajawal', sans-serif;
             direction: ltr;
             margin: 0;
             padding: 0;
@@ -30,6 +30,7 @@
             color: #333;
             font-size: 28px;
             margin: 10px 0;
+            font-weight: bold;
         }
         .store-info {
             color: #666;
@@ -51,12 +52,14 @@
         th {
             background-color: #f2f2f2;
             font-weight: bold;
+            color: #333;
         }
         img {
             max-width: 100px;
             height: auto;
             display: block;
             margin: 0 auto;
+            border-radius: 5px;
         }
         footer {
             background-color: #333;
@@ -64,6 +67,7 @@
             text-align: center;
             padding: 10px 0;
             margin-top: 20px;
+            font-size: 14px;
         }
         @media (max-width: 768px) {
             .store-name {
@@ -80,9 +84,9 @@
 </head>
 <body>
     <div class="title-section">
-        <img src="{{asset('photo_2024-11-09_18-56-30.jpg')}}" alt="D-Seven Store Logo">
+        <img src="{{ asset('photo_2024-11-09_18-56-30.jpg') }}" alt="D-Seven Store Logo" class="logo">
         <h1 class="store-name">D-Seven Store</h1>
-        <p class="store-info">العنوان:  نجع حمادي ، قنا، مصر</p>
+        <p class="store-info">العنوان: نجع حمادي ، قنا، مصر</p>
         <p class="store-info">هاتف: 01021369699</p>
     </div>
 
@@ -97,16 +101,16 @@
         <tbody>
             @foreach($show as $product)
             <tr>
-                <td><img src="{{asset('images/'.$product->image)}}" alt="{{ $product->name }}"></td>
                 <td>{{ $product->price }} ج.م</td>
                 <td>{{ $product->name }}</td>
+                <td><img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}"></td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2024 - D-Seven Store</p>
+        <p>جميع الحقوق محفوظة © {{ date('Y') }} - D-Seven Store</p>
     </footer>
 </body>
 </html>
