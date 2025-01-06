@@ -8,6 +8,10 @@
     <meta name="author" content="D-Seven Store">
     <title>D-Seven Store - عرض المنتجات</title>
     <style>
+          @font-face {
+        font-family: 'Cairo';
+        src: url('{{ public_path('fonts/Cairo-Regular.ttf') }}') format('truetype');
+     }
         body {
             font-family: 'cairo', sans-serif;
             direction: ltr;

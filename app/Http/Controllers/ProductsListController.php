@@ -13,15 +13,15 @@ class ProductsListController extends Controller
     // use PDF;  // Add this at the top of your controller
 
     public function index()
-{
-    $show = Product::orderBy('created_at', 'desc')->get();
-
-    $pdf = Pdf::loadView('ProductList', compact('show'))
-        ->setPaper('a4')
-        ->setOption('defaultFont', 'Cairo');
-
-    return $pdf->download('ProductList.pdf');
-}
+    {
+        $show = Product::orderBy('created_at', 'desc')->get();
+        $pdf = Pdf::loadView('ProductList', compact('show'))
+            ->setPaper('a4')
+            ->setOption('isHtml5ParserEnabled', true)
+            ->setOption('isRemoteEnabled', true);
+    
+        return $pdf->download('ProductList.pdf');
+    }
 
     public function indexWeb()
     {
