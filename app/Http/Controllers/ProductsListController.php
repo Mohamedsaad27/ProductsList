@@ -101,7 +101,7 @@ class ProductsListController extends Controller
         $product->update([
             'name' => $validated['name'],
             'price' => $validated['price'],
-            'image' => $validated['image'] ?? null
+            'image' => $validated['image'] ?? $product->image
         ]);
 
         return redirect()
